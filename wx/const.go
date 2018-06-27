@@ -5,7 +5,7 @@ const (
 	UUID_URL   = BASE_URL + "/jslogin?"                  /* 获取uuid的地址 */
 	QRCODE_URL = BASE_URL + "/qrcode/"                   /* 获取二维码的地址 */
 	L_URL      = BASE_URL + "/l/"                        /* 二维码地址内容 */
-	LOGIN_URL  = BASE_URL + "/cgi-bin/mmwebwx-bin/login" /* 登陆URL  */
+	LOGIN_URL  = BASE_URL + "/cgi-bin/mmwebwx-bin/login?" /* 登陆URL  */
 
 	API_BASE_URL              = "https://wx.qq.com/cgi-bin/mmwebwx-bin" /* API基准地址 */
 	INIT_URL                  = API_BASE_URL + "/webwxinit"             /* 初始化URL  */

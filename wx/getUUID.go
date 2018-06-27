@@ -18,7 +18,6 @@ func GetUUID() (string, error) {
 	km.Add("_", fmt.Sprintf("%v", time.Now().Unix()))
 
 	resp, err := http.Get(UUID_URL + km.Encode())
-	fmt.Println(UUID_URL + km.Encode())
 	if err != nil {
 		//TODO 此处应该打印日志
 		return "", fmt.Errorf("访问微信服务器API失败: %s", err.Error())

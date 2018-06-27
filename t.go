@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	"github.com/Linvas/wc/wx"
+	"github.com/Linvas/wxbot/wx"
 )
 
 func main() {
@@ -12,4 +12,6 @@ func main() {
 		fmt.Println(err.Error())
 	}
 	fmt.Println(resp)
+
+	wx.CheckLogin()
 }
