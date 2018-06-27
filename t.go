@@ -7,11 +7,17 @@ import (
 )
 
 func main() {
-	resp, err := wx.GetUUID()
+	uuid, err := wx.GetUUID()
 	if err != nil {
 		fmt.Println(err.Error())
 	}
-	fmt.Println(resp)
+	fmt.Println("UUID : " + uuid)
+	wx.GenQrFile("./qr321.png", uuid)
 
-	wx.CheckLogin()
+	redirectURL, err := wx.CheckLogin(uuid)
+	if err != nil {
+		fmt.Println(err.Error())
+	} else {
+		fmt.Println(redirectURL)
+	}
 }

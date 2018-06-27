@@ -13,7 +13,7 @@ import (
 	"github.com/boombuler/barcode/qr"
 )
 
-func genQrFile(filePath, uuid string) error {
+func GenQrFile(filePath, uuid string) error {
 	content := L_URL + uuid
 	img, _ := qr.Encode(content, qr.L, qr.Unicode)
 

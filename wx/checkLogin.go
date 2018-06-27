@@ -36,6 +36,10 @@ func CheckLogin(uuid string) (string, error) {
 		}
 		return ss[1], nil
 	}
+	if resp.StatusCode == 200 && strings.Contains(body, "window.code=408") {
+		time.Sleep(time.Second * 3)
+		return CheckLogin(uuid)
+	}
 
-	return "", fmt.Errorf("登录响应: %s", body)
+	return "", fmt.Errorf("等待登录响应: %s", body)
 }

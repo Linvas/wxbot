@@ -11,7 +11,7 @@ import (
 	"github.com/boombuler/barcode/qr"
 )
 
-func genQrBase64(uuid string) string {
+func GenQrBase64(uuid string) string {
 	content := L_URL + uuid
 	img, _ := qr.Encode(content, qr.L, qr.Unicode)
 	img, _ = barcode.Scale(img, 300, 300)
