@@ -28,17 +28,25 @@ func CheckLogin(uuid string) (string, error) {
 		return "", fmt.Errorf("获取微信API反馈登陆数据失败: " + err.Error())
 	}
 	body := string(bodyBytes)
-	if strings.Contains(body, "window.code=200") &&
-		strings.Contains(body, "window.redirect_uri") {
+	if strings.Contains(body, "window.code=200") && strings.Contains(body, "window.redirect_uri") {
 		ss := strings.Split(body, "\"")
 		if len(ss) < 2 {
 			return "", fmt.Errorf("解析redirect_uri 失败, %s", body)
 		}
 		return ss[1], nil
 	}
-	if resp.StatusCode == 200 && strings.Contains(body, "window.code=408") {
+	if strings.Contains(body, "window.code=408") {
+		//408 为等待用户扫描,重新执行
 		time.Sleep(time.Second * 3)
 		return CheckLogin(uuid)
+	}
+	if strings.Contains(body, "window.code=201") {
+		//201 为获取用户头像
+		return CheckLogin(uuid)
+	}
+
+	if strings.Contains(body, "window.code=400") {
+		return "", fmt.Errorf("二维码过期, 请重新扫描: %s", body)
 	}
 
 	return "", fmt.Errorf("等待登录响应: %s", body)

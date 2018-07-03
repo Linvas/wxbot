@@ -19,6 +19,6 @@ func GetRedirectURL(uuid string) (string, error) {
 			break
 		}
 	}
-	fmt.Println(redirectURL)
+	fmt.Println("获得重定向地址 : " + redirectURL)
 	return redirectURL, nil
 }

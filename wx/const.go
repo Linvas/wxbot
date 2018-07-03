@@ -1,5 +1,7 @@
 package wx
 
+import "encoding/xml"
+
 const (
 	BASE_URL   = "https://login.weixin.qq.com"            /* API基准地址 */
 	UUID_URL   = BASE_URL + "/jslogin?"                   /* 获取uuid的地址 */
@@ -33,7 +35,16 @@ const (
 	UA_PC        = "" //TODO PC电脑客户端UA
 )
 
-type XmlConfig struct {
+// XMLConfig : web api xml response struct
+type XMLConfig struct {
+	XMLName     xml.Name `xml:"error"`
+	Ret         int      `xml:"ret"`
+	Message     string   `xml:"message"`
+	Skey        string   `xml:"skey"`
+	Wxsid       string   `xml:"wxsid"`
+	Wxuin       string   `xml:"wxuin"`
+	PassTicket  string   `xml:"pass_ticket"`
+	IsGrayscale int      `xml:"isgrayscale"`
 }
 
 type WxSession struct {
