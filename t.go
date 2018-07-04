@@ -30,7 +30,6 @@ func main() {
 			time.Sleep(time.Second * 3)
 			fmt.Println(err.Error())
 		} else {
-			fmt.Println(redirectURL)
 			break
 		}
 	}

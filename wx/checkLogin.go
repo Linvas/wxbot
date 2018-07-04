@@ -9,7 +9,7 @@ import (
 	"time"
 )
 
-//CheckLogin 检查微信是否已经登录
+//CheckLogin 检查微信是否已经登录,并获取重定向地址
 func CheckLogin(uuid string) (string, error) {
 	var timestamp = time.Now().UnixNano() / 1000000
 	km := url.Values{}
