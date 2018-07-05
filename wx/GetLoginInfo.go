@@ -19,7 +19,7 @@ func GetLoginInfo(redirectURL string, xcfg *XMLConfig) ([]*http.Cookie, error) {
 		return nil, err
 	}
 	if xcfg.Ret != 0 {
-		return nil, fmt.Errorf("Xml结果出错 : " + string(bodyBytes))
+		return nil, fmt.Errorf("Xml解析出错 : " + string(bodyBytes))
 	}
 	return resp.Cookies(), nil
 }

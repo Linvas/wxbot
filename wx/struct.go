@@ -1,6 +1,8 @@
 package wx
 
-import "encoding/xml"
+import (
+	"encoding/xml"
+)
 
 //================================= Configuration================================================
 
@@ -18,6 +20,18 @@ type XMLConfig struct {
 
 //WxSession : wechat session
 type WxSession struct {
+}
+
+// SyncKey: struct for synccheck
+type SyncKey struct {
+	Key int
+	Val int
+}
+
+// SyncKeyList: list of synckey
+type SyncKeyList struct {
+	Count int
+	List  []SyncKey
 }
 
 //================================= END Configuration ================================================
@@ -107,6 +121,12 @@ type EmotionMessage struct {
 // ====================================== END MSG ==================================================
 
 // ====================================== Contacts ==================================================
+
+// VerifyUser: verify user request body struct
+type VerifyUser struct {
+	Value            string
+	VerifyUserTicket string
+}
 
 // User: contact struct
 type User struct {

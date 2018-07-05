@@ -33,6 +33,16 @@ func main() {
 			break
 		}
 	}
-	wx.GetLoginInfo(redirectURL)
+	xmlCfg := &wx.XMLConfig{}
+	cookies, err := wx.GetLoginInfo(redirectURL, xmlCfg)
+	if err != nil {
+		fmt.Println(err.Error())
+		return
+	}
+	for _, v := range cookies {
+		fmt.Println(*v)
+	}
+
+	fmt.Printf("XML : %+v", *xmlCfg)
 
 }
