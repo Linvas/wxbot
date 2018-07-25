@@ -1,4 +1,20 @@
+# Compiled Object files, Static and Dynamic libs (Shared Objects)
+*.o
+*.a
+*.so
 .idea
 .vscode
-debug
+# Folders
+_obj
+_test
+
+#~
 *.exe
+*.test
+.log
+/.idea
+/wxbot.exe~
+sdrms
+/logs/*.log
+/debug
+/wxbot
