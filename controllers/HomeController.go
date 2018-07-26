@@ -25,6 +25,10 @@ func (c *HomeController) Error() {
 	c.setTpl("home/error.html", "shared/layout_pullbox.html")
 }
 func (c *HomeController) Login() {
+	//判断是否登录
+	if c.curUser.Id != 0 {
+		c.Redirect("/home/index", 302)
+	}
 
 	c.LayoutSections = make(map[string]string)
 	c.LayoutSections["headcssjs"] = "home/login_headcssjs.html"
