@@ -7,6 +7,8 @@ import (
 )
 
 func init() {
+	beego.Router("/", &controllers.MainController{}, "POST:Index")
+
 	//用户角色路由
 	beego.Router("/role/index", &controllers.RoleController{}, "*:Index")
 	beego.Router("/role/datagrid", &controllers.RoleController{}, "Get,Post:DataGrid")
@@ -44,12 +46,20 @@ func init() {
 
 	beego.Router("/home/index", &controllers.HomeController{}, "*:Index")
 	beego.Router("/home/login", &controllers.HomeController{}, "*:Login")
-	beego.Router("/home/dologin", &controllers.HomeController{}, "Post:DoLogin")
-	beego.Router("/home/logout", &controllers.HomeController{}, "*:Logout")
+	//登录
+	beego.Router("/sign",&controllers.SignController{}, "Get:Main")
+	beego.Router("/signOut", &controllers.SignController{}, "Get:Out")
+	beego.Router("/signIn", &controllers.SignController{}, "Post:In")
 
-	beego.Router("/home/404", &controllers.HomeController{}, "*:Page404")
-	beego.Router("/home/error/?:error", &controllers.HomeController{}, "*:Error")
+	//错误
+	beego.ErrorHandler("404",NotFound)
+	beego.Router("/404", &controllers.ErrorController{}, "*:NotFound")
+	beego.Router("/error/?:error", &controllers.ErrorController{}, "*:Index")
 
-	beego.Router("/", &controllers.HomeController{}, "*:Index")
+
+
+	//json 模式
+	//beego.Router()
 
 }
+

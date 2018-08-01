@@ -11,7 +11,7 @@ _test
 #~
 *.exe
 *.test
-.log
+*.log
 /.idea
 /wxbot.exe~
 sdrms
