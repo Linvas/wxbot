@@ -7,7 +7,7 @@ import (
 )
 
 func init() {
-	beego.Router("/", &controllers.MainController{}, "POST:Index")
+	beego.Router("/", &controllers.MainController{}, "GET:Index")
 
 	//用户角色路由
 	beego.Router("/role/index", &controllers.RoleController{}, "*:Index")
@@ -52,7 +52,7 @@ func init() {
 	beego.Router("/signIn", &controllers.SignController{}, "Post:In")
 
 	//错误
-	beego.ErrorHandler("404",NotFound)
+	beego.ErrorHandler("404", NotFound)
 	beego.Router("/404", &controllers.ErrorController{}, "*:NotFound")
 	beego.Router("/error/?:error", &controllers.ErrorController{}, "*:Index")
 

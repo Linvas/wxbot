@@ -22,15 +22,19 @@ func (c *BaseController) Prepare() {
 	//附值
 	c.controllerName, c.actionName = c.GetControllerAndAction()
 	//从Session里获取数据 设置用户信息
+	c.checkLogin()
+
 	c.adapterUserInfo()
+
+
 }
 
 // checkLogin判断用户是否登录，未登录则跳转至登录页面
 // 一定要在BaseController.Prepare()后执行
 func (c *BaseController) checkLogin() {
-	if c.curUser.Id == 0 {
+	if c.curUser.Id == 0 && c.controllerName != "sign" {
 		//登录页面地址
-		URL := c.URLFor("HomeController.Login") + "?url="
+		URL := c.URLFor("SignController.In") + "?url="
 		//登录成功后返回的址为当前
 		returnURL := c.Ctx.Request.URL.Path
 		//如果ajax请求则返回相应的错码和跳转的地址
