@@ -16,29 +16,37 @@ type BaseController struct {
 	controllerName string             //当前控制名称
 	actionName     string             //当前action名称
 	curUser        models.BackendUser //当前用户信息
+	license        License
+}
+
+type License struct {
+	LicenseUser string //证书用户名
+	ExpireTime  uint  //过期时间
+	WxBots      uint //微信号数量
 }
 
 func (c *BaseController) Prepare() {
 	//附值
 	c.controllerName, c.actionName = c.GetControllerAndAction()
 	//从Session里获取数据 设置用户信息
-	c.checkLogin()
+	//c.checkLogin()
 
 	c.adapterUserInfo()
 
-
+	//检查证书
+	c.checkLicence()
 }
 
 // checkLogin判断用户是否登录，未登录则跳转至登录页面
 // 一定要在BaseController.Prepare()后执行
 func (c *BaseController) checkLogin() {
-	if c.curUser.Id == 0 && c.controllerName != "sign" {
+	if c.curUser.Id == 0 && c.controllerName != "SignController" {
 		//登录页面地址
-		URL := c.URLFor("SignController.In") + "?url="
+		URL := c.URLFor("SignController.Main") + "?url="
 		//登录成功后返回的址为当前
 		returnURL := c.Ctx.Request.URL.Path
 		//如果ajax请求则返回相应的错码和跳转的地址
-		if c.Ctx.Input.IsAjax() {
+		if c.Ctx.Input.IsAjax() || c.Ctx.Input.IsPost() {
 			//由于是ajax请求，因此地址是header里的Referer
 			returnURL := c.Ctx.Input.Refer()
 			c.jsonResult(enums.JRCode302, "请登录", URL+returnURL)
@@ -149,11 +157,25 @@ func (c *BaseController) setTpl(template ...string) {
 	c.Layout = layout
 	c.TplName = tplName
 }
+
 func (c *BaseController) jsonResult(code enums.JsonResultCode, msg string, obj interface{}) {
 	r := &models.JsonResult{code, msg, obj}
 	c.Data["json"] = r
 	c.ServeJSON()
 	c.StopRun()
+}
+
+//TODO 检查证书
+func (c *BaseController) checkLicence() {
+	//读取证书的编号
+	licenseKey := beego.AppConfig.String("license_key")
+	if licenseKey == "" {
+		c.StopRun()
+	}
+	//aes解密, 检查到期日期
+
+	//检查用户检查IP信息, 是否已经在别处登录, 缓存5分钟, 5分钟检查一次license是否可用, 如果ip或者mac地址发生变化则下线
+
 }
 
 // 重定向

@@ -7,14 +7,16 @@
 # Folders
 _obj
 _test
-
+*~
 #~
 *.exe
 *.test
 *.log
-/.idea
 /wxbot.exe~
 sdrms
 /logs/*.log
 /debug
 /wxbot
+/vendor/github.com
+/vendor/gitlab.com
+/vendor/gopkg.in
