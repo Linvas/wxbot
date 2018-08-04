@@ -1,8 +1,8 @@
 package main
 
 import (
-	_ "github.com/Linvas/wxbot/routers"
-	_ "github.com/Linvas/wxbot/sysinit"
+	_ "github.com/Linvas/xbot/routers"
+	_ "github.com/Linvas/xbot/sysinit"
 
 	"github.com/astaxie/beego"
 )

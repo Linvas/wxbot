@@ -3,7 +3,7 @@ package models
 import (
 	"fmt"
 
-	"github.com/Linvas/wxbot/utils"
+	"github.com/Linvas/xbot/utils"
 
 	"github.com/astaxie/beego/orm"
 )

@@ -1,7 +1,7 @@
 package controllers
 
 import (
-	"github.com/Linvas/wxbot/enums"
+	"github.com/Linvas/xbot/enums"
 )
 
 type ErrorController struct {

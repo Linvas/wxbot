@@ -1,7 +1,7 @@
 package routers
 
 import (
-	"github.com/Linvas/wxbot/controllers"
+	"github.com/Linvas/xbot/controllers"
 
 	"github.com/astaxie/beego"
 )

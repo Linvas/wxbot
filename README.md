@@ -31,7 +31,7 @@ http://blog.csdn.net/lhtzbj12/article/details/78847482
 
 2.安装本系统
 ```
-go get github.com/Linvas/wxbot
+go get github.com/Linvas/xbot
 ```
 3.将根目录下的sdrms.sql导入mysql
 

@@ -1,7 +1,7 @@
 package sysinit
 
 import (
-	"github.com/Linvas/wxbot/utils"
+	"github.com/Linvas/xbot/utils"
 
 	"github.com/astaxie/beego"
 )

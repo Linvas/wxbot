@@ -3,9 +3,9 @@ package controllers
 import (
 	"strings"
 
-	"github.com/Linvas/wxbot/enums"
-	"github.com/Linvas/wxbot/models"
-	"github.com/Linvas/wxbot/utils"
+	"github.com/Linvas/xbot/enums"
+	"github.com/Linvas/xbot/models"
+	"github.com/Linvas/xbot/utils"
 
 	"github.com/astaxie/beego/orm"
 )

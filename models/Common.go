@@ -1,6 +1,6 @@
 package models
 
-import "github.com/Linvas/wxbot/enums"
+import "github.com/Linvas/xbot/enums"
 
 type JsonResult struct {
 	Code enums.JsonResultCode `json:"code"`

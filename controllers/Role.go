@@ -3,8 +3,8 @@ package controllers
 import (
 	"encoding/json"
 
-	"github.com/Linvas/wxbot/enums"
-	"github.com/Linvas/wxbot/models"
+	"github.com/Linvas/xbot/enums"
+	"github.com/Linvas/xbot/models"
 
 	"fmt"
 	"strconv"
